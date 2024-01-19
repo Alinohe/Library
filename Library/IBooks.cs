@@ -1,14 +1,12 @@
 ﻿using static Library.BooksBase;
 namespace Library
 {
-
     namespace Books
     {
         public interface IBooks
         {
             string Title { get; set; }
             string Writer { get; set; }
-
 
             void AddRate(float rate);
             void AddRate(double rate);
@@ -21,5 +19,4 @@ namespace Library
             void ShowStatistics();
         }
     }
-
 }

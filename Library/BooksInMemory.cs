@@ -1,5 +1,4 @@
-﻿
-using System.Text;
+﻿using System.Text;
 
 namespace Library
 {
@@ -42,7 +41,6 @@ namespace Library
         {
             rates = new List<double>();
         }
-
 
         public void ChangeTitle(string newTitle)
         {
@@ -115,5 +113,4 @@ namespace Library
             throw new NotImplementedException();
         }
     }
-
 }

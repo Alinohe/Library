@@ -69,6 +69,7 @@ namespace Library
                 }
             }
         }
+
         public abstract void ShowRates();
         public abstract Statistics GetStatistics();
         public abstract void AddRate(char rate);

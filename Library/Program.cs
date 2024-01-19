@@ -1,6 +1,4 @@
-﻿
-
-using Library.Books;
+﻿using Library.Books;
 
 namespace Library
 {
@@ -9,9 +7,7 @@ namespace Library
         private static void Main(string[] args)
         {
             WritelineColor(ConsoleColor.Magenta, "Hello to the [Book's Rate] console.");
-
             bool CloseApp = false;
-
             while (!CloseApp)
             {
                 Console.WriteLine();
@@ -126,7 +122,4 @@ namespace Library
             return userInput;
         }
     }
-
-
-
 }

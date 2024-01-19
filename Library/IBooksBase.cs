@@ -1,6 +1,5 @@
 ﻿namespace Library
 {
-
     public interface IBooksBase
     {
         string Title { get; set; }
