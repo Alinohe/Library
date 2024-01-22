@@ -81,23 +81,16 @@ namespace Library
             {
                 ShowRates();
                 Console.WriteLine($"{Title} {Writer} statistics:");
-                //Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine($"Total grades: {stat.Count}");
-                // Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"Highest grade: {stat.Max:N2}");
-                // Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Lowest grade: {stat.Min:N2}");
-                // Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"Average: {stat.Average:N2}");
                 Console.WriteLine();
-                //Console.ResetColor();
             }
 
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Couldn't get statistics for {this.Title} {this.Writer} because no grade has been added.");
-                Console.ResetColor();
             }
         }
 

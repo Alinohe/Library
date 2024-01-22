@@ -6,17 +6,14 @@ namespace Library
     {
         private static void Main(string[] args)
         {
-            WritelineColor(ConsoleColor.Magenta, "Hello to the [Book's Rate] console.");
             bool CloseApp = false;
             while (!CloseApp)
             {
-                Console.WriteLine();
-                WritelineColor(ConsoleColor.Cyan,
-                    "1 - Add Book's rate to the program memory and show statistics\n" +
-                    "2 - Add Book's rate to the .txt file and show statistics\n" +
-                    "X - Close app\n");
+                Console.WriteLine("1 - Add Book's rate to the program memory and show statistics\n"
+                    + "2 - Add Book's rate to the .txt file and show statistics\n"
+                    + "X - Close app\n");
 
-                WritelineColor(ConsoleColor.Yellow, "What you want to do? \nPress key 1, 2 or X: ");
+                Console.WriteLine("What you want to do? \nPress key 1, 2 or X: ");
                 var userInput = Console.ReadLine().ToUpper();
 
                 switch (userInput)
@@ -34,11 +31,11 @@ namespace Library
                         break;
 
                     default:
-                        WritelineColor(ConsoleColor.Red, "Invalid operation.\n");
+                        Console.WriteLine("Invalid operation.\n");
                         continue;
                 }
             }
-            WritelineColor(ConsoleColor.DarkYellow, "\n\nBye Bye! Press any key to leave.");
+            Console.WriteLine("\n\nBye Bye! Press any key to leave.");
             Console.ReadKey();
         }
 
@@ -78,7 +75,7 @@ namespace Library
         {
             while (true)
             {
-                WritelineColor(ConsoleColor.Yellow, $"Enter rate for {book.Title} {book.Writer}:");
+                Console.WriteLine($"Enter rate for {book.Title} {book.Writer}:");
                 var input = Console.ReadLine();
 
                 if (input == "q" || input == "Q")
@@ -103,7 +100,7 @@ namespace Library
                 }
                 finally
                 {
-                    WritelineColor(ConsoleColor.DarkMagenta, $"To leave and show {book.Title} {book.Writer} statistics enter 'q'.");
+                    Console.WriteLine($"To leave and show {book.Title} {book.Writer} statistics enter 'q'.");
                 }
             }
         }
@@ -117,7 +114,7 @@ namespace Library
 
         private static string GetValueFromUser(string comment)
         {
-            WritelineColor(ConsoleColor.Yellow, comment);
+            Console.WriteLine(comment);
             string userInput = Console.ReadLine();
             return userInput;
         }
