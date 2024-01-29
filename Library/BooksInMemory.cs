@@ -8,35 +8,6 @@ namespace Library
         private string title;
         private string writer;
 
-        public override string Title
-        {
-            get
-            {
-                return $"{char.ToUpper(title[0])} {title.Substring(1, title.Length - 1).ToLower()}";
-            }
-            set
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    title = value;
-                }
-            }
-        }
-
-        public override string Writer
-        {
-            get
-            {
-                return $"{char.ToUpper(writer[0])}.";
-            }
-            set
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    writer = value;
-                }
-            }
-        }
         public BooksInMemory(string title, string writer) : base(title, writer)
         {
             rates = new List<double>();
@@ -96,21 +67,6 @@ namespace Library
                 result.Add(rate);
             }
             return result;
-        }
-
-        public override void AddRate(float rate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void AddRate(int rate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void AddRate(char rate)
-        {
-            throw new NotImplementedException();
         }
     }
 }

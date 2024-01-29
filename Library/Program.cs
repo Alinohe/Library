@@ -32,7 +32,7 @@ namespace Library
 
                     default:
                         Console.WriteLine("Invalid operation.\n");
-                        continue;
+                        break;
                 }
             }
             Console.WriteLine("\n\nBye Bye! Press any key to leave.");

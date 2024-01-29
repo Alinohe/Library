@@ -4,20 +4,45 @@ namespace Library
 {
     public abstract class BooksBase : Book, IBooks
     {
+        private string title;
+        private string writer;
 
-        public override string Title { get; set; }
-        public override string Writer { get; set; }
+        public override string Title
+        {
+            get
+            {
+                return $"{char.ToUpper(title[0])} {title.Substring(1, title.Length - 1).ToLower()}";
+            }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    title = value;
+                }
+            }
+        }
+
+        public override string Writer
+        {
+            get
+            {
+                return $"{char.ToUpper(writer[0])}.";
+            }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    writer = value;
+                }
+            }
+        }
 
         public BooksBase(string title, string writer) : base(title, writer)
         {
 
         }
 
-        public abstract void AddRate(float rate);
-
         public abstract void AddRate(double rate);
-
-        public abstract void AddRate(int rate);
 
         public void AddRate(string rate)
         {
@@ -72,7 +97,7 @@ namespace Library
 
         public abstract void ShowRates();
         public abstract Statistics GetStatistics();
-        public abstract void AddRate(char rate);
+
 
         public void ShowStatistics()
         {
@@ -94,18 +119,9 @@ namespace Library
             }
         }
 
-        public void showRate()
-        {
-            throw new NotImplementedException();
-        }
-
         public void showRates()
         {
             throw new NotImplementedException();
         }
     }
 }
-
-
-
-

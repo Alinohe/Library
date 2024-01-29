@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Reflection;
+using System.Text;
 
 namespace Library
 {
@@ -9,30 +10,6 @@ namespace Library
         private string title;
         private string writer;
         private string fullBookName = $"{title}_{writer}{BookName}";
-
-        public override string Title
-        {
-            get
-            {
-                return $"{char.ToUpper(title[0])}{title.Substring(1, title.Length - 1).ToLower()}";
-            }
-            set
-            {
-                title = value;
-            }
-        }
-
-        public override string Writer
-        {
-            get
-            {
-                return $"{char.ToUpper(writer[0])}{writer.Substring(1, writer.Length - 1).ToLower()}";
-            }
-            set
-            {
-                writer = value;
-            }
-        }
 
         public override void AddRate(double rate)
         {
@@ -86,19 +63,5 @@ namespace Library
             return result;
         }
 
-        public override void AddRate(float rate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void AddRate(int rate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void AddRate(char rate)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
