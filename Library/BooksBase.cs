@@ -1,5 +1,4 @@
 ﻿using Library.Books;
-
 namespace Library
 {
     public abstract class BooksBase : Book, IBooks

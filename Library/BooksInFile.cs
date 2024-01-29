@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using System.Text;
-
 namespace Library
 {
     public class BooksInFile(string title, string writer) : BooksBase(title, writer)

@@ -1,6 +1,4 @@
-﻿
-using NUnit.Framework;
-
+﻿using NUnit.Framework;
 namespace Library.Test
 {
     public class LibraryTest

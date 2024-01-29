@@ -1,5 +1,4 @@
 ﻿using Library.Books;
-
 namespace Library
 {
     internal class Program
