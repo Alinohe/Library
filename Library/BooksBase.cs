@@ -3,20 +3,17 @@ namespace Library
 {
     public abstract class BooksBase : Book, IBooks
     {
-        private string title;
-        private string writer;
-
         public override string Title
         {
             get
             {
-                return $"{char.ToUpper(title[0])} {title.Substring(1, title.Length - 1).ToLower()}";
+                return $"{char.ToUpper(Title[0])} {Title.Substring(1, Title.Length - 1).ToLower()}";
             }
             set
             {
                 if (!string.IsNullOrEmpty(value))
                 {
-                    title = value;
+                    Title = value;
                 }
             }
         }
@@ -25,13 +22,13 @@ namespace Library
         {
             get
             {
-                return $"{char.ToUpper(writer[0])}.";
+                return $"{char.ToUpper(Writer[0])}.";
             }
             set
             {
                 if (!string.IsNullOrEmpty(value))
                 {
-                    writer = value;
+                    Writer = value;
                 }
             }
         }

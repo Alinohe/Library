@@ -4,8 +4,6 @@ namespace Library
     public class BooksInMemory : BooksBase
     {
         private List<double> rates;
-        private string title;
-        private string writer;
 
         public BooksInMemory(string title, string writer) : base(title, writer)
         {
@@ -14,7 +12,7 @@ namespace Library
 
         public void ChangeTitle(string newTitle)
         {
-            string oldTitle = this.title;
+            string oldTitle = this.Title;
             foreach (char c in newTitle)
             {
                 if (char.IsDigit(c))

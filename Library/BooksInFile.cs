@@ -6,8 +6,6 @@ namespace Library
     {
         private const string BookName = "BooksRates.txt";
 
-        private string title;
-        private string writer;
         private string fullBookName = $"{title}_{writer}{BookName}";
 
         public override void AddRate(double rate)
@@ -29,7 +27,7 @@ namespace Library
 
         public override void ShowRates()
         {
-            StringBuilder sb = new StringBuilder($"{this.title} {this.writer} rates are: ");
+            StringBuilder sb = new StringBuilder($"{this.Title} {this.Writer} rates are: ");
 
             using (var reader = File.OpenText(($"{fullBookName}")))
             {
