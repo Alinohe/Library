@@ -1,4 +1,4 @@
-﻿using static Library.BooksBase;
+﻿﻿using static Library.BooksBase;
 namespace Library
 {
     namespace Books
@@ -9,7 +9,7 @@ namespace Library
             string Writer { get; set; }
             void AddRate(double rate);
             void AddRate(string rate);
-            void showRates();
+            void ShowRates();
 
             Statistics GetStatistics();
             void ShowStatistics();

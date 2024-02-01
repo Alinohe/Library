@@ -2,11 +2,16 @@
 using System.Text;
 namespace Library
 {
-    public class BooksInFile(string title, string writer) : BooksBase(title, writer)
+    public class BooksInFile : BooksBase
     {
         private const string BookName = "BooksRates.txt";
 
-        private string fullBookName = $"{title}_{writer}{BookName}";
+        private string fullBookName
+        {
+            get { return $"{Title}_{Writer}{BookName}"; }
+        }
+
+        public BooksInFile(string title, string writer) : base(title, writer) { }
 
         public override void AddRate(double rate)
         {
@@ -16,7 +21,7 @@ namespace Library
                 using (var writeIN2 = File.AppendText($"audit.txt"))
                 {
                     writeIN.WriteLine(rate);
-                    writeIN2.WriteLine($"{title} {writer} - {rate}        {DateTime.UtcNow}");
+                    writeIN2.WriteLine($"{Title} {Writer} - {rate}        {DateTime.UtcNow}");
                 }
             }
             else

@@ -26,6 +26,7 @@ namespace Library
                 }
             }
         }
+
         public override void AddRate(double rate)
         {
             if (rate > 0 && rate <= 9)
@@ -58,7 +59,6 @@ namespace Library
         public override Statistics GetStatistics()
         {
             var result = new Statistics();
-
             foreach (var rate in rates)
             {
                 result.Add(rate);

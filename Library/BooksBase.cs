@@ -1,41 +1,45 @@
 ﻿using Library.Books;
 namespace Library
 {
-    public abstract class BooksBase : Book, IBooks
+    public abstract class BooksBase : IBooks
     {
-        public override string Title
+        private string _title;
+        private string _writer;
+
+        public string Title
         {
             get
             {
-                return $"{char.ToUpper(Title[0])} {Title.Substring(1, Title.Length - 1).ToLower()}";
+                return $"{char.ToUpper(_title[0])} {_title.Substring(1, _title.Length - 1).ToLower()}";
             }
             set
             {
                 if (!string.IsNullOrEmpty(value))
                 {
-                    Title = value;
+                    _title = value;
                 }
             }
         }
 
-        public override string Writer
+        public string Writer
         {
             get
             {
-                return $"{char.ToUpper(Writer[0])}.";
+                return $"{char.ToUpper(_writer[0])}.";
             }
             set
             {
                 if (!string.IsNullOrEmpty(value))
                 {
-                    Writer = value;
+                    _writer = value;
                 }
             }
         }
 
-        public BooksBase(string title, string writer) : base(title, writer)
+        protected BooksBase(string title, string writer)
         {
-
+            _title = title;
+            _writer = writer;
         }
 
         public abstract void AddRate(double rate);
@@ -113,11 +117,6 @@ namespace Library
             {
                 Console.WriteLine($"Couldn't get statistics for {this.Title} {this.Writer} because no grade has been added.");
             }
-        }
-
-        public void showRates()
-        {
-            throw new NotImplementedException();
         }
     }
 }
