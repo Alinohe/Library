@@ -4,24 +4,23 @@ using Library.Entities;
 public class ListRepository<T>
     where T : class, IEntity, new()
 {
-    private readonly List<T> _books = new();
+    private readonly List<T> _items = new();
 
-    public IEnumerable<T> GetAll() => _books.ToList();
-    public T GetById(int id) => _books.Single(book => book.Id == id);
+    public IEnumerable<T> GetAll() => _items.ToList();
+    public T GetById(int id) => _items.Single(item => item.Id == id);
     public T CreateNewItem() => new T();
-    public void Delete(T book) => _books.Remove(book);
-    public void Add(T book)
+    public void Remove(T item) => _items.Remove(item);
+    public void Add(T item)
     {
-        book.Id = _books.Count + 1;
-        _books.Add(book);
+        item.Id = _items.Count + 1;
+        _items.Add(item);
     }
-    public void Update(T book)
+    public void Update(T item)
     {
-        var existingBook = GetById(book.Id);
-        existingBook = book;
+        var existingBook = GetById(item.Id);
+        existingBook = item;
     }
     public void Save()
     {
     }
-
 }

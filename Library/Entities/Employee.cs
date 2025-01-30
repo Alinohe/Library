@@ -2,6 +2,8 @@
 {
     public class Employee :EntityBase
     {
+        public string? Name { get; set; }
+        public string? Surname { get; set; }
         public Employee()
         {
 
@@ -14,9 +16,7 @@
         {
 
         }
-        public string? FirstName { get; set; }
-        public string? Surname { get; set; }
 
-        public override string ToString() => $"ID: {Id}, FirstName: {FirstName} Sunrame: {Surname}";
+        public override string ToString() => $"ID: {Id}, FirstName: {Name} Sunrame: {Surname}";
     }
 }

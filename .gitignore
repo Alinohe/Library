@@ -396,3 +396,11 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/Library/BooksBase.cs
+/Library/BooksInFile.cs
+/Library/BooksInMemory.cs
+/Library/IBooks.cs
+/Library/BooksBase.cs
+/Library/BooksInFile.cs
+/Library/BooksInMemory.cs
+/Library/IBooks.cs
