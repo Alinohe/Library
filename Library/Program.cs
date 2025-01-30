@@ -37,7 +37,7 @@ static void AddEmplpoyees(IRepository<Books> repository)
     var books = new[]
     {
         new Books { Title = "1984", Author = "George Orwell" },
-        new Books {Title = "1984", Author = "Aldous Huxley"},
+        new Books {Title = "Brave New World", Author = "Aldous Huxley"},
         new Books { Title = "The Green Mile", Author = "Stephen King" },
     };
     repository.AddBatch(books);
