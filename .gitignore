@@ -404,3 +404,4 @@ FodyWeavers.xsd
 /Library/BooksInFile.cs
 /Library/BooksInMemory.cs
 /Library/IBooks.cs
+/Library/Data/LibraryDbContext.cs

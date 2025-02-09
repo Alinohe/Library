@@ -1,8 +1,7 @@
-﻿namespace Library.Entities
-{
-    public abstract class EntityBase : IEntity
+﻿namespace Library.Entities;
 
-    {
-        public int Id { get; set; }
-    }
+public abstract class EntityBase : IEntity
+
+{
+    public int Id { get; set; }
 }
