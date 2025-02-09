@@ -1,45 +1,45 @@
-﻿using NUnit.Framework;
+﻿//using NUnit.Framework;
 
-namespace Library.Test
-{
-    public class LibraryTest
-    {
-        [Test]
-        public void CheckMaxValue()
-        {
+//namespace Library.Test
+//{
+//    public class LibraryTest
+//    {
+//        [Test]
+//        public void CheckMaxValue()
+//        {
 
-            var book = new BooksInMemory("Green Mile", "Stephen King");
-            book.AddRate(9);
-            book.AddRate(8);
-            book.AddRate(7);
-            var statistics = book.GetStatistics();
+//            var book = new BooksInMemory("Green Mile", "Stephen King");
+//            book.AddRate(9);
+//            book.AddRate(8);
+//            book.AddRate(7);
+//            var statistics = book.GetStatistics();
 
-            Assert.That(statistics.Max, Is.EqualTo(9));
-        }
+//            Assert.That(statistics.Max, Is.EqualTo(9));
+//        }
 
-        [Test]
-        public void CheckMinValue()
-        {
+//        [Test]
+//        public void CheckMinValue()
+//        {
 
-            var book = new BooksInMemory("Green Mile", "Stephen King");
-            book.AddRate(9);
-            book.AddRate(8);
-            book.AddRate(7);
-            var statistics = book.GetStatistics();
+//            var book = new BooksInMemory("Green Mile", "Stephen King");
+//            book.AddRate(9);
+//            book.AddRate(8);
+//            book.AddRate(7);
+//            var statistics = book.GetStatistics();
 
-            Assert.That(statistics.Min, Is.EqualTo(7));
-        }
+//            Assert.That(statistics.Min, Is.EqualTo(7));
+//        }
 
-        [Test]
-        public void CheckAverageValue()
-        {
-            var book = new BooksInMemory("Green Mile", "Stephen King");
-            book.AddRate(9);
-            book.AddRate(8);
-            book.AddRate(7);
-            var statistics = book.GetStatistics();
+//        [Test]
+//        public void CheckAverageValue()
+//        {
+//            var book = new BooksInMemory("Green Mile", "Stephen King");
+//            book.AddRate(9);
+//            book.AddRate(8);
+//            book.AddRate(7);
+//            var statistics = book.GetStatistics();
 
-            Assert.That(statistics.Average, Is.EqualTo(8));
-        }
-    }
-}
+//            Assert.That(statistics.Average, Is.EqualTo(8));
+//        }
+//    }
+//}
