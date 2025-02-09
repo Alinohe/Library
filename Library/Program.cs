@@ -59,6 +59,7 @@ while (true)
     var input = Console.ReadLine();
     if (input == "1")
     {
+<<<<<<< HEAD
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("Lista zapisanych ksiazek");
         Console.ResetColor();
@@ -102,6 +103,14 @@ while (true)
         Console.WriteLine("Niepoprawna opcja");
         Console.ResetColor();
     }
+=======
+        new Books { Title = "1984", Author = "George Orwell" },
+        new Books {Title = "Brave New World", Author = "Aldous Huxley"},
+        new Books { Title = "The Green Mile", Author = "Stephen King" },
+    };
+    repository.AddBatch(books);
+    "Books Added".AddBatch(books);
+>>>>>>> 7e3a901f2244fd43954e2ff7c89282467e6124c2
 }
 
 static void WriteAllToConsole(IReadRepository<IEntity> repository)
