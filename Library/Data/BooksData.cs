@@ -59,7 +59,7 @@ public class BooksData : IBooksData
         var books = _bookStore.GetAll();
         return books.FirstOrDefault(b => b.Id == id);
     }
-    public Books? GetByTitle(string title)
+    public Books GetByTitle(string title)
     {
         var books = _bookStore.GetAll();
         return books.FirstOrDefault(b => b.Title == title);

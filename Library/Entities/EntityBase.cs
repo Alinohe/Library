@@ -1,5 +1,5 @@
 ﻿namespace Library.Entities;
-
+using System.Security.Principal;
 public abstract class EntityBase : IEntity
 
 {

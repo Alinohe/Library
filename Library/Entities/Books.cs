@@ -11,7 +11,7 @@ public class Books : EntityBase
     public int? Year { get; set; }
     public string? ISBN { get; set; }
     public bool? IsAvailable { get; set; }
-
+    public DateTime? DateOfBorrow { get; set; }
     public Books()
     {
 

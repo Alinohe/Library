@@ -63,7 +63,7 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
                 var json = streamReader.ReadToEnd();
                 if (string.IsNullOrWhiteSpace(json))
                 {
-                    throw new Exception("You haven't got any books in your library");
+                    throw new Exception("Nie Ma Zadnych ksiazek w bibliotece");
                 }
                 else
                 {
@@ -73,14 +73,9 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
         }
         else
         {
-            throw new Exception("File doesn't exist");
+            throw new Exception("Nie mozna znalezc pliku");
         }
     }
-
-    //public T? GetById(int id)
-    //{
-    //    throw new NotImplementedException();
-    //}
 
     public void Add(T item)
     {
@@ -96,20 +91,20 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
         }
         else
         {
-            _items = new List<T>();
+            items = new List<T>();
         }
 
-        lastId = _items.Count > 0
-            ? _items.Max(x => x.Id)
+        lastId = items.Count > 0
+            ? items.Max(x => x.Id)
             : 0;
 
         item.Id = ++lastId;
 
-        _items.Add(item);
+        items.Add(item);
 
         using (var writer = new StreamWriter(fileName))
         {
-            var newJson = JsonSerializer.Serialize(_items);
+            var newJson = JsonSerializer.Serialize(items);
             writer.Write(newJson);
         }
         _itemAddedCallback?.Invoke(item);
@@ -123,32 +118,32 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
             using (var streamReader = new StreamReader(fileName))
             {
                 var json = streamReader.ReadToEnd();
-                _items = string.IsNullOrWhiteSpace(json)
-                    ? new List<T>()
+                items = string.IsNullOrWhiteSpace(json) ? new List<T>()
                     : JsonSerializer.Deserialize<List<T>>(json) ?? new List<T>();
+
             }
         }
         else
         {
-            throw new Exception("File doesn't exist");
+            throw new Exception("Lista Ksiazek nie istnieje");
         }
 
-        var _itemToRemove = _items.FirstOrDefault(x => x.Id == item.Id);
-        _items.Remove(_itemToRemove);
+        var _itemToRemove = items.FirstOrDefault(x => x.Id == item.Id);
+        items.Remove(_itemToRemove);
         _itemRemovedCallback?.Invoke(item);
         ItemRemoved?.Invoke(this, item);
 
         using (var streamWriter = new StreamWriter(fileName))
         {
-            var newJson = JsonSerializer.Serialize(_items);
+            var newJson = JsonSerializer.Serialize(items);
             streamWriter.Write(newJson);
         }
     }
 
     public void Save()
     {
-        Console.ForegroundColor = ConsoleColor.DarkGreen;
-        Console.WriteLine("The book was saved in the 'mylibrary.json' file" + Environment.NewLine);
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("Ksiazka zostala zapisna w pliku 'library.json'" + Environment.NewLine);
         Console.ResetColor();
     }
 
@@ -161,14 +156,14 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
         _items = new List<IEntity>();
         Load();
     }
-    public void Add(IEntity item)
-    {
-        if (item.Id == 0)
-        {
-            item.Id = _items.Count == 0 ? 1 : _items.Max(x => x.Id) + 1;
-        }
-        _items.Add(item);
-    }
+    //public void Add(IEntity item)
+    //{
+    //    if (item.Id == 0)
+    //    {
+    //        item.Id = _items.Count == 0 ? 1 : _items.Max(x => x.Id) + 1;
+    //    }
+    //    _items.Add(item);
+    //}
     public void Update(IEntity item)
     {
         var existingItem = _items.FirstOrDefault(x => x.Id == item.Id);
