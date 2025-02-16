@@ -1,6 +1,5 @@
 ﻿namespace Library.Repositories;
 using Library.Entities;
-
 public class ListRepository<T>
     where T : class, IEntity, new()
 {
@@ -8,7 +7,6 @@ public class ListRepository<T>
 
     public IEnumerable<T> GetAll() => _items.ToList();
     public T GetById(int id) => _items.Single(item => item.Id == id);
-    //public T CreateNewItem() => new T();
     public void Remove(T item) => _items.Remove(item);
     public void Add(T item)
     {

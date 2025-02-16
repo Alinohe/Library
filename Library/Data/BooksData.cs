@@ -1,10 +1,5 @@
 ﻿using Library.Entities;
-using Library.Data;
 using Library.Repositories;
-using System.Text.Json;
-using System.Text;
-
-
 namespace Library.Data;
 
 public class BooksData : IBooksData
@@ -101,6 +96,5 @@ public class BooksData : IBooksData
         {
             return list[0];
         }
-      
     }
 }

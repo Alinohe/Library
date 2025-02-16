@@ -1,6 +1,4 @@
 ﻿using Library.Entities;
-
-
 namespace Library.BooksInfo.DataExtensions;
 
 public static class BooksInfo

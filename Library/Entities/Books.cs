@@ -1,5 +1,4 @@
 ﻿using System.Text;
-
 namespace Library.Entities;
 
 public class Books : EntityBase
@@ -59,11 +58,6 @@ public class Books : EntityBase
                 sb.AppendLine($"IsAvailable: {IsAvailable}");
             }
             return sb.ToString();
-
         }
     }
-
-    //public override string ToString() => $"ID: {Id}, Title: {Title}, Author: {Author}, Genre: {Genre}, Publisher: {Publisher}," +
-    //    $" Year: {Year}, Pages: {Pages}, Language: {Language}, ISBN: {ISBN}, Format: {Format}, Description: {Description}," +
-    //    $" Image: {Image};Available: {IsAvailable}";
 }

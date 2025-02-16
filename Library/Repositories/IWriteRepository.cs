@@ -1,7 +1,5 @@
 ﻿namespace Library.Repositories;
 using Library.Entities;
-using Library.Repositories; 
-using Library.Data;
 
 public interface IWriteRepository<in T> where T : class, IEntity
 {

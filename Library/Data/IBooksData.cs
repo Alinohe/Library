@@ -1,7 +1,5 @@
 ﻿using Library.Entities;
-
 namespace Library.Data;
-
 public interface IBooksData
 {
     List<Books> GetByTitle();
@@ -21,6 +19,5 @@ public interface IBooksData
     Books? GetByYear(int year);
     Books? GetByISBN(string isbn);
     Books? GetByIsAvailable(bool isAvailable);
-
 
 }

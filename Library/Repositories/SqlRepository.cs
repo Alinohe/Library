@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Library.Repositories;
 using Library.Entities;
-using Library.Data;
-
 namespace Library.Repositories;
 
 public class SqlRepository<T> : IRepository<T> where T : class, IEntity, new()

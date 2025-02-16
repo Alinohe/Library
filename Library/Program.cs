@@ -5,11 +5,9 @@ using Library.Repositories.Repositories;
 using Microsoft.VisualBasic;
 
 
-
-
-Console.ForegroundColor = ConsoleColor.Green;
-Console.WriteLine("Welcome to our Library");
-Console.WriteLine("=========================");
+Console.ForegroundColor = ConsoleColor.DarkCyan;
+Console.WriteLine("Witamy w naszej bibliotece");
+Console.WriteLine("=============================");
 Console.ResetColor();
 
 string LFile = "Library File.txt";
@@ -21,18 +19,17 @@ var bookInFile = new WriteInFileRepository<Books>(BookAdded, BookRemoved);
 bookInFile.ItemAdded += BookItemAdded;
 bookInFile.ItemRemoved += BookItemRemoved;
 
-
 void BookAdded(Books item)
 {
     Console.ForegroundColor = ConsoleColor.Blue;
-    Console.WriteLine($"[{DateTime.Now.ToString("dd-MM-yyyy: HH:mm:ss")}] {item.Id} {item.Title} {item.Author}: Book added");
+    Console.WriteLine($"[{DateTime.Now.ToString("dd-MM-yyyy: HH:mm:ss")}] {item.Id} {item.Title} {item.Author}: Ksiazka zostala dodanado biblioteki");
     Console.ResetColor();
 }
 
 void BookRemoved(Books item)
 {
     Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine($"[{DateTime.Now.ToString("dd-MM-yyyy: HH:mm:ss")}] {item.Id} {item.Title} {item.Author}: Book removed");
+    Console.WriteLine($"[{DateTime.Now.ToString("dd-MM-yyyy: HH:mm:ss")}] {item.Id} {item.Title} {item.Author}: Ksiazka zostala usunieta z boblioteki");
     Console.ResetColor();
 }
 
@@ -100,6 +97,7 @@ while (true)
                 Console.ResetColor();
             }
             break;
+
         case "3":
             Console.WriteLine("Podaj tytul książki do usunięcia");
 
@@ -114,6 +112,7 @@ while (true)
                 Console.ResetColor();
             }
             break;
+
         case "4":
             Console.WriteLine("Podaj tytul ksiazki do aktualizacji");
             try
@@ -127,6 +126,7 @@ while (true)
                 Console.ResetColor();
             }
             break;
+
         default:
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Niepoprawna opcja");
@@ -195,7 +195,6 @@ static void UpdateBook(IRepository<Books> bookInFile)
 
     while (true)
     {
-        
         var opt = "Wartosc Opcjonalna";
 
         Console.ForegroundColor = ConsoleColor.Yellow;
@@ -220,8 +219,8 @@ static void UpdateBook(IRepository<Books> bookInFile)
         Console.WriteLine("\nPodaj nowy rok wydania ksiazki");
         Console.ResetColor();
         input = Console.ReadLine();
-        //var year = IsNullOrEmpty(input, opt2);
         int? yearInt;
+
         if (int.TryParse(input, out int result) && result >= 1000 && result <= DateAndTime.Now.Year)
         {
             yearInt = result;
@@ -272,11 +271,9 @@ static void UpdateBook(IRepository<Books> bookInFile)
         Console.ResetColor();
         input = Console.ReadLine();
 
-
         var books = new[]
         {
             new Books
-
             {
                 Author = author,
                 Title = title,
@@ -286,9 +283,9 @@ static void UpdateBook(IRepository<Books> bookInFile)
                 IsAvailable = isAvailable,
                 DateOfBorrow = dateOfBorow,
             }
-
         };
         bookInFile.AddBatch(books);
+
         if (input == "q")
         {
             break;
@@ -321,10 +318,8 @@ static void UpdateBook(IRepository<Books> bookInFile)
                     Console.ResetColor();
                 }
                 break;
-
         }
         return input;
-
     }
 
     static void BookCheck(out string? input, out bool isAvilable, string avilable)
@@ -348,41 +343,6 @@ static void UpdateBook(IRepository<Books> bookInFile)
         }
         isAvilable = bool.Parse(input);
     }
-    //if (bookForUpdate != null)
-    //{
-    //    Console.WriteLine("\nPodaj nowy tytul ksiazki * zostaw puste jesli nie chcesz zmienic");
-    //    Title = Console.ReadLine();
-
-    //    Console.WriteLine("\nPodaj nowego autora ksiazki * zostaw puste jesli nie chcesz zmienic");
-    //    Author = Console.ReadLine();
-
-    //    Console.WriteLine("\nPodaj nowy gatunek ksiazki * zostaw puste jesli nie chcesz zmienic");
-    //    Genere = Console.ReadLine();
-
-    //    Console.WriteLine("\nPodaj nowy rok wydania ksiazki * zostaw puste jesli nie chcesz zmienic");
-    //    Year = Console.ReadLine();
-
-    //    Console.WriteLine("\nPodaj nowy ISBN ksiazki * zostaw puste jesli nie chcesz zmienic");
-    //    ISBN = Console.ReadLine();
-
-    //    Console.WriteLine("\nPodaj nowa dostepnosc ksiazki");
-    //    IsAvailable = Console.ReadLine();
-
-    //    bookForUpdate.Title = Title;
-    //    bookForUpdate.Author = Author;
-    //    bookForUpdate.Genere = Genere;
-    //    bookForUpdate.Year = int.Parse(Year);
-    //    bookForUpdate.ISBN = ISBN;
-    //    bookForUpdate.IsAvailable = bool.Parse(IsAvailable);
-
-    //    bookInFile.Update(bookForUpdate);
-
-
-    //}
-    //else
-    //{
-    //    throw new Exception($"Ksiazka '{Title}' nie istnieje");
-    //}
 }
 void AddBooks(IRepository<Books> repository, IRepository<Books> bookInFile)
 {
@@ -413,8 +373,8 @@ void AddBooks(IRepository<Books> repository, IRepository<Books> bookInFile)
         Console.WriteLine("\nPodaj rok wydania ksiazki");
         Console.ResetColor();
         input = Console.ReadLine();
-        //var year = IsNullOrEmpty(input, opt2);
         int? yearInt;
+
         if (int.TryParse(input, out int result) && result >= 1000 && result <= DateAndTime.Now.Year)
         {
             yearInt = result;
@@ -465,11 +425,9 @@ void AddBooks(IRepository<Books> repository, IRepository<Books> bookInFile)
         Console.ResetColor();
         input = Console.ReadLine();
 
-
         var books = new[]
         {
             new Books
-
             {
                 Author = author,
                 Title = title,
@@ -479,9 +437,9 @@ void AddBooks(IRepository<Books> repository, IRepository<Books> bookInFile)
                 IsAvailable = isAvailable,
                 DateOfBorrow = dateOfBorow,
             }
-
         };
         bookInFile.AddBatch(books);
+
         if (input == "q")
         {
             break;
@@ -514,10 +472,8 @@ void AddBooks(IRepository<Books> repository, IRepository<Books> bookInFile)
                     Console.ResetColor();
                 }
                 break;
-
         }
         return input;
-
     }
 
     static void BookCheck(out string? input, out bool isAvilable, string avilable)
@@ -541,10 +497,4 @@ void AddBooks(IRepository<Books> repository, IRepository<Books> bookInFile)
         }
         isAvilable = bool.Parse(input);
     }
-
 }
-
-
-//     "1984", Author = "George Orwell
-//        "Brave New World", Author = "Aldous Huxley
-

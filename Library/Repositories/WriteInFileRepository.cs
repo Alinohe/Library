@@ -1,7 +1,4 @@
-﻿
-namespace Library.Repositories;
-using Library.Repositories;
-using Library.Repositories.Repositories;
+﻿namespace Library.Repositories;
 using Library.Entities;
 using System.Text.Json;
 
@@ -30,8 +27,7 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
     public event EventHandler<T> ItemAdded;
     public event EventHandler<T> ItemRemoved;
 
-
-    //sprawdzic czy nie throw new Exception
+        //sprawdzic czy nie throw new Exception
     public T? GetById(int id)
     {
         throw new NotImplementedException();
@@ -51,8 +47,6 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
         //}
         //return items.FirstOrDefault(x => x.Id == id);
     }
-
-
 
     public IEnumerable<T> GetAll()
     {
@@ -110,6 +104,7 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
         _itemAddedCallback?.Invoke(item);
         ItemAdded?.Invoke(this, item);
     }
+
     public void Update(T item)
     {
         if (File.Exists(fileName))
@@ -125,6 +120,7 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
         {
             throw new Exception("Lista Ksiazek nie istnieje");
         }
+
         var _itemToUpdate = items.FirstOrDefault(x => x.Id == item.Id);
         items.Remove(_itemToUpdate);
         items.Add(item);
@@ -171,7 +167,6 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
         Console.ResetColor();
     }
 
-
     private string _fileName;
     private List<IEntity> _items;
     public WriteInFileRepository(string fileName)
@@ -180,6 +175,7 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
         _items = new List<IEntity>();
         Load();
     }
+
     public void Add(IEntity item)
     {
         if (item.Id == 0)
@@ -188,6 +184,7 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
         }
         _items.Add(item);
     }
+
     public void Update(IEntity item)
     {
         var existingItem = _items.FirstOrDefault(x => x.Id == item.Id);
@@ -197,6 +194,7 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
             _items.Add(item);
         }
     }
+
     private void Load()
     {
         if (File.Exists(_fileName))
@@ -205,5 +203,4 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
             _items = JsonSerializer.Deserialize<List<IEntity>>(json);
         }
     }
-
 }
