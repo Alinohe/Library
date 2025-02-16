@@ -156,14 +156,14 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
         _items = new List<IEntity>();
         Load();
     }
-    //public void Add(IEntity item)
-    //{
-    //    if (item.Id == 0)
-    //    {
-    //        item.Id = _items.Count == 0 ? 1 : _items.Max(x => x.Id) + 1;
-    //    }
-    //    _items.Add(item);
-    //}
+    public void Add(IEntity item)
+    {
+        if (item.Id == 0)
+        {
+            item.Id = _items.Count == 0 ? 1 : _items.Max(x => x.Id) + 1;
+        }
+        _items.Add(item);
+    }
     public void Update(IEntity item)
     {
         var existingItem = _items.FirstOrDefault(x => x.Id == item.Id);
@@ -173,14 +173,14 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
             _items.Add(item);
         }
     }
-    public void Delete(int id)
-    {
-        var existingItem = _items.FirstOrDefault(x => x.Id == id);
-        if (existingItem != null)
-        {
-            _items.Remove(existingItem);
-        }
-    }
+    //public void Delete(int id)
+    //{
+    //    var existingItem = _items.FirstOrDefault(x => x.Id == id);
+    //    if (existingItem != null)
+    //    {
+    //        _items.Remove(existingItem);
+    //    }
+    //}
     private void Load()
     {
         if (File.Exists(_fileName))

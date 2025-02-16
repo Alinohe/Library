@@ -3,7 +3,7 @@ using Library.Repositories;
 using Library.Data;
 using Library.Repositories.Repositories;
 using Microsoft.VisualBasic;
-using System.Security.Cryptography.X509Certificates;
+
 
 
 
@@ -284,19 +284,20 @@ void AddBooks(IRepository<Books> repository, IRepository<Books> bookInFile)
     }
 
     static void BookCheck(out string? input, out bool isAvilable, string avilable)
+    
     {
         Console.ForegroundColor = ConsoleColor.Magenta;
         Console.WriteLine($"\nWpisz '+', jeśli {avilable}, '-' jeśli nie jest, albo zostaw pole puste");
         Console.ResetColor();
         input = Console.ReadLine();
-        //isAvilable = input == avilable;
+        isAvilable = input == avilable;
         if (input == "+")
         {
-            input = "Ksiazka dostepna";
+            input = "true";
         }
         else if (input == "-" || string.IsNullOrEmpty(input))
         {
-            input = "Ksiazka niedostepna";
+            input = "false";
         }
         else
         {
