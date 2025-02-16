@@ -110,6 +110,30 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
         _itemAddedCallback?.Invoke(item);
         ItemAdded?.Invoke(this, item);
     }
+    public void Update(T item)
+    {
+        if (File.Exists(fileName))
+        {
+            using (var streamReader = new StreamReader(fileName))
+            {
+                var json = streamReader.ReadToEnd();
+                items = string.IsNullOrWhiteSpace(json) ? new List<T>()
+                    : JsonSerializer.Deserialize<List<T>>(json) ?? new List<T>();
+            }
+        }
+        else
+        {
+            throw new Exception("Lista Ksiazek nie istnieje");
+        }
+        var _itemToUpdate = items.FirstOrDefault(x => x.Id == item.Id);
+        items.Remove(_itemToUpdate);
+        items.Add(item);
+        using (var streamWriter = new StreamWriter(fileName))
+        {
+            var newJson = JsonSerializer.Serialize(items);
+            streamWriter.Write(newJson);
+        }
+    }
 
     public void Remove(T item)
     {
@@ -173,14 +197,6 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
             _items.Add(item);
         }
     }
-    //public void Delete(int id)
-    //{
-    //    var existingItem = _items.FirstOrDefault(x => x.Id == id);
-    //    if (existingItem != null)
-    //    {
-    //        _items.Remove(existingItem);
-    //    }
-    //}
     private void Load()
     {
         if (File.Exists(_fileName))

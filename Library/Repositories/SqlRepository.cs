@@ -39,5 +39,5 @@ public class SqlRepository<T> : IRepository<T> where T : class, IEntity, new()
 
     public void Save() => _dbContext.SaveChanges();
 
-    //public void Update(T item) => _dbSet.Update(item);
+    public void Update(T item) => _dbSet.Update(item);
 }
