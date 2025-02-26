@@ -1,7 +1,5 @@
 ﻿using Library.Entities;
 using Library.Repositories;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 namespace Library.Data;
 
@@ -57,7 +55,7 @@ public class BooksData : IBooksData
     }
     public List<Books> GetByIsAvailable()
     {
-       var books = _bookStore.GetAll();
+        var books = _bookStore.GetAll();
         return books.OrderBy(b => b.IsAvailable).ToList();
     }
     public List<Books> GetById()
@@ -114,7 +112,7 @@ public class BooksData : IBooksData
         };
     }
 
-        public string AnonymusClass()
+    public string AnonymusClass()
     {
         var books = _bookStore.GetAll();
         var list = books.Select(b => new
@@ -143,8 +141,8 @@ public class BooksData : IBooksData
             sb.AppendLine($"SellPrice: {book.SellPrice}");
         }
         return sb.ToString();
-    }   
-    
+    }
+
 
     public List<Books> GetAll()
     {
@@ -198,7 +196,7 @@ public class BooksData : IBooksData
         return list;
     }
 
-     public decimal GetTotalPrice()
+    public decimal GetTotalPrice()
     {
         var books = _bookStore.GetAll();
         return (decimal)books.Sum(b => b.BuyPrice);
@@ -259,7 +257,7 @@ public class BooksData : IBooksData
         return books.Take(count).ToList();
     }
 
-      public List<Books> TakeBooksWithTheSameAuthor(string Author)
+    public List<Books> TakeBooksWithTheSameAuthor(string Author)
     {
         var books = _bookStore.GetAll();
         return books.Where(b => b.Author == Author).ToList();
@@ -273,7 +271,7 @@ public class BooksData : IBooksData
 
     public List<Books> TakeBooksWithTheSamePublisher(string Publisher)
     {
-       var books = _bookStore.GetAll();
+        var books = _bookStore.GetAll();
         return books.Where(b => b.Publisher == Publisher).ToList();
     }
 

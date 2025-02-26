@@ -43,17 +43,16 @@ public class Books : EntityBase
         sb.AppendLine($"Borowed: {DateOfBorrow.ToString()}");
         sb.AppendLine($"Buy Price: {BuyPrice.ToString()}");
         sb.AppendLine($"SellPrice: {SellPrice.ToString()}");
-        sb.AppendLine($"Sold Price: {SoldPrice.ToString()}");   
+        sb.AppendLine($"Sold Price: {SoldPrice.ToString()}");
         if (NameLengh.HasValue)
         {
-            sb.AppendLine($"Name Lengh: { NameLengh}");
+            sb.AppendLine($"Name Lengh: {NameLengh}");
         }
         if (SoldPrice.HasValue)
         {
             sb.AppendLine($"Price: {SoldPrice}");
         }
-         return sb.ToString();
-
+        return sb.ToString();
     }
     #endregion
 }
