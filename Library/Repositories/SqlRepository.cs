@@ -1,16 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Library.Entities;
+using Library.Data;
 namespace Library.Repositories;
+
 
 public class SqlRepository<T> : IRepository<T> where T : class, IEntity, new()
 {
     private readonly DbContext _dbContext;
     private readonly DbSet<T> _dbSet;
     private readonly Action<T> _itemAddedCallback;
-    public SqlRepository(DbContext dbcontext, Action<T> itemAddedCallback = null)
+    public SqlRepository(DbContext dbContext, Action<T> itemAddedCallback = null)
     {
-        _dbContext = dbcontext;
-        _dbSet = dbcontext.Set<T>();
+        _dbContext = dbContext;
+        _dbSet = dbContext.Set<T>();
         _itemAddedCallback = itemAddedCallback;
     }
 

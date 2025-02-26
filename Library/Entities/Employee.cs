@@ -17,6 +17,6 @@
 
         }
 
-        public override string ToString() => $"ID: {Id}, FirstName: {Name} Sunrame: {Surname}";
+        public override string ToString() => $"ID: {Id}, FirstName: {Name} {Surname}";
     }
 }

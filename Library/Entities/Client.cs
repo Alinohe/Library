@@ -18,5 +18,5 @@ public class Client : EntityBase
 
     }
 
-    public override string ToString() => $"Id: {Id}, Name: {Name}, Surname:{Surname}";
+    public override string ToString() => $"Id: {Id}, Name: {Name} {Surname}";
 }
