@@ -4,12 +4,15 @@ using Library.Repositories;
 using Library.Data;
 using Microsoft.Extensions.DependencyInjection;
 using Library;
+using Library.UserComminucation;
 
 var services = new ServiceCollection();
+services.AddSingleton<IApp, App>();
+services.AddSingleton<IUserCommunication, UserCommunication>();
 services.AddSingleton<Books>();
 services.AddSingleton<IRepository<Books>, WriteInFileRepository<Books>>();
 services.AddSingleton<IRepository<Books>, SqlRepository<Books>>();
-services. AddSingleton<IRepository<Books>, ListRepository<Books>>();
+services.AddSingleton<IRepository<Books>, ListRepository<Books>>();
 services.AddSingleton<IRepository<Client>, WriteInFileRepository<Client>>();
 services.AddSingleton<IRepository<Client>, SqlRepository<Client>>();
 services.AddSingleton<IRepository<Client>, ListRepository<Client>>();
@@ -21,7 +24,6 @@ services.AddSingleton<IRepository<Librarian>, SqlRepository<Librarian>>();
 services.AddSingleton<IRepository<Librarian>, ListRepository<Librarian>>();
 
 services.AddSingleton<IBooksData, BooksData>();
-services.AddSingleton<IApp, App>();
 
 var serviceProvider = services.BuildServiceProvider();
 var app = serviceProvider.GetService<IApp>();
