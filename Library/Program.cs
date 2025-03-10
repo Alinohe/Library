@@ -27,7 +27,10 @@ services.AddSingleton<IBooksData, BooksData>();
 
 var serviceProvider = services.BuildServiceProvider();
 var app = serviceProvider.GetService<IApp>();
+var userCommunication = serviceProvider.GetService<IUserCommunication>();
 app.Run();
+
+//userCommunication.MainMenu();
 
 
 
