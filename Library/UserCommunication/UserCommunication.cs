@@ -7,13 +7,13 @@ namespace Library.UserComminucation;
 public class UserCommunication : IUserCommunication
 {
 
-    private readonly IRepository<Books> _booksRepository;
+    private readonly IRepository<Book> _booksRepository;
     private readonly IRepository<Employee> _employeesRepository;
     private readonly IRepository<Client> _clientsRepository;
     private readonly IRepository<Librarian> _librarianRepository;
 
     public UserCommunication(
-   IRepository<Books> booksRepository,
+   IRepository<Book> booksRepository,
    IRepository<Employee> employeesRepository,
    IRepository<Client> clientsRepository,
    IRepository<Librarian> librarianRepository)
@@ -151,7 +151,7 @@ public class UserCommunication : IUserCommunication
 
     }
 
-    void BookAdded(Books item)
+    void BookAdded(Book item)
     {
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine($"[{DateTime.Now.ToString("dd-MM-yyyy: HH:mm:ss")}] {item.Id} {item.Title} {item.Author}: Ksiazka zostala dodanado biblioteki");

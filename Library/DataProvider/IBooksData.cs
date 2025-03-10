@@ -3,19 +3,19 @@ namespace Library.Data;
 public interface IBooksData
 {
     //Select
-    List<Books> GetByTitle();
-    List<Books> GetByAuthor();
-    List<Books> GetByGenere();
-    List<Books> GetByPublisher();
-    List<Books> GetByYear();
-    List<Books> GetByISBN();
-    List<Books> GetByIsAvailable();
-    List<Books> GetById();
-    List<Books> GetAll();
-    List<Books> GetByPrice(string title);
-    List<Books> FilterBooks(decimal minBuyPrice);
-    List<Books> FilterBooks(decimal minBuyPrice, decimal maxBuyPrice);
-    List<Books> FilterBooks(decimal minBuyPrice, decimal maxBuyPrice, decimal minSellPrice);
+    List<Book> GetByTitle();
+    List<Book> GetByAuthor();
+    List<Book> GetByGenere();
+    List<Book> GetByPublisher();
+    List<Book> GetByYear();
+    List<Book> GetByISBN();
+    List<Book> GetByIsAvailable();
+    List<Book> GetById();
+    List<Book> GetAll();
+    List<Book> GetByPrice(string title);
+    List<Book> FilterBooks(decimal minBuyPrice);
+    List<Book> FilterBooks(decimal minBuyPrice, decimal maxBuyPrice);
+    List<Book> FilterBooks(decimal minBuyPrice, decimal maxBuyPrice, decimal minSellPrice);
 
     string AnonymusClass();
     decimal GetTotalPrice();
@@ -28,30 +28,30 @@ public interface IBooksData
 
     //`Insert
 
-    Books? GetById(int id);
-    Books? GetByTitle(string title);
-    Books? GetByAuthor(string author);
-    Books? GetByGenere(string genere);
-    Books? GetByPublisher(string publisher);
-    Books? GetByYear(int year);
-    Books? GetByISBN(string isbn);
-    Books? GetByIsAvailable(bool isAvailable);
-    Books? GetByBuyPrice(decimal buyPrice);
-    Books? GetBySellPrice(decimal sellPrice);
+    Book? GetById(int id);
+    Book? GetByTitle(string title);
+    Book? GetByAuthor(string author);
+    Book? GetByGenere(string genere);
+    Book? GetByPublisher(string publisher);
+    Book? GetByYear(int year);
+    Book? GetByISBN(string isbn);
+    Book? GetByIsAvailable(bool isAvailable);
+    Book? GetByBuyPrice(decimal buyPrice);
+    Book? GetBySellPrice(decimal sellPrice);
 
     //Take
 
-    List<Books> TakeBooks(int count);
-    List<Books> TakeBooksWithTheSameAuthor(string Author);
-    List<Books> TakeBooksWithTheSameGenere(string Genere);
-    List<Books> TakeBooksWithTheSamePublisher(string Publisher);
-    List<Books> TakeBooksWhileStartsWith(String prefix);
+    List<Book> TakeBooks(int count);
+    List<Book> TakeBooksWithTheSameAuthor(string Author);
+    List<Book> TakeBooksWithTheSameGenere(string Genere);
+    List<Book> TakeBooksWithTheSamePublisher(string Publisher);
+    List<Book> TakeBooksWhileStartsWith(String prefix);
 
     //distinct
-    List<Books> DistinctByAuthors();
+    List<Book> DistinctByAuthors();
     List<string> DistinctAllAuthors();
 
     //Chunk
-    List<Books[]> ChunkBooks(int size);
+    List<Book[]> ChunkBooks(int size);
 
 }

@@ -5,8 +5,8 @@ using System.Text.Json;
 public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity, new()
 {
     public string LFile;
-    public Action<Books> bookAdded;
-    public WriteInFileRepository(string file, Action<Books> bookAdded)
+    public Action<Book> bookAdded;
+    public WriteInFileRepository(string file, Action<Book> bookAdded)
     {
         LFile = file;
         this.bookAdded = bookAdded;
@@ -27,25 +27,24 @@ public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity,
     public event EventHandler<T> ItemAdded;
     public event EventHandler<T> ItemRemoved;
 
-        //sprawdzic czy nie throw new Exception
+    //sprawdzic czy nie throw new Exception
     public T? GetById(int id)
     {
-        throw new NotImplementedException();
-        //if (File.Exists(fileName))
-        //{
-        //    using (var streamReader = new StreamReader(fileName))
-        //    {
-        //        var json = streamReader.ReadToEnd();
-        //        items = string.IsNullOrWhiteSpace(json)
-        //            ? new List<T>()
-        //            : JsonSerializer.Deserialize<List<T>>(json) ?? new List<T>();
-        //    }
-        //}
-        //else
-        //{
-        //    throw new Exception("File doesn't exist");
-        //}
-        //return items.FirstOrDefault(x => x.Id == id);
+        if (File.Exists(fileName))
+        {
+            using (var streamReader = new StreamReader(fileName))
+            {
+                var json = streamReader.ReadToEnd();
+                items = string.IsNullOrWhiteSpace(json)
+                    ? new List<T>()
+                    : JsonSerializer.Deserialize<List<T>>(json) ?? new List<T>();
+            }
+        }
+        else
+        {
+            throw new Exception("File doesn't exist");
+        }
+        return items.FirstOrDefault(x => x.Id == id);
     }
 
     public IEnumerable<T> GetAll()

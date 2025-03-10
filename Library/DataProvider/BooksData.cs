@@ -5,16 +5,16 @@ namespace Library.Data;
 
 public class BooksData : IBooksData
 {
-    private readonly IRepository<Books> _bookStore;
-    public BooksData(IRepository<Books> bStore)
+    private readonly IRepository<Book> _bookStore;
+    public BooksData(IRepository<Book> bStore)
     {
         _bookStore = bStore;
     }
 
-    public List<Books> GetSpecificColumns()
+    public List<Book> GetSpecificColumns()
     {
         var books = _bookStore.GetAll();
-        var list = books.Select(b => new Books
+        var list = books.Select(b => new Book
         {
             Title = b.Title,
             Author = b.Author,
@@ -24,81 +24,81 @@ public class BooksData : IBooksData
         return list;
     }
 
-    public List<Books> GetByTitle()
+    public List<Book> GetByTitle()
     {
         var books = _bookStore.GetAll();
         return books.OrderBy(b => b.Title).ToList();
     }
-    public List<Books> GetByAuthor()
+    public List<Book> GetByAuthor()
     {
         var books = _bookStore.GetAll();
         return books.OrderBy(b => b.Author).ToList();
     }
-    public List<Books> GetByGenere()
+    public List<Book> GetByGenere()
     {
         var books = _bookStore.GetAll();
         return books.OrderBy(b => b.Genere).ToList();
     }
-    public List<Books> GetByPublisher()
+    public List<Book> GetByPublisher()
     {
         var books = _bookStore.GetAll();
         return books.OrderBy(b => b.Publisher).ToList();
     }
-    public List<Books> GetByYear()
+    public List<Book> GetByYear()
     {
         return _bookStore.GetAll().OrderBy(b => b.Year).ToList();
     }
-    public List<Books> GetByISBN()
+    public List<Book> GetByISBN()
     {
         var books = _bookStore.GetAll();
         return books.OrderBy(b => b.ISBN).ToList();
     }
-    public List<Books> GetByIsAvailable()
+    public List<Book> GetByIsAvailable()
     {
         var books = _bookStore.GetAll();
         return books.OrderBy(b => b.IsAvailable).ToList();
     }
-    public List<Books> GetById()
+    public List<Book> GetById()
     {
         var books = _bookStore.GetAll();
         return books.OrderBy(b => b.Id).ToList();
     }
-    public Books? GetById(int id)
+    public Book? GetById(int id)
     {
         var books = _bookStore.GetAll();
         return books.FirstOrDefault(b => b.Id == id);
     }
-    public Books GetByTitle(string title)
+    public Book GetByTitle(string title)
     {
         var books = _bookStore.GetAll();
         return books.FirstOrDefault(b => b.Title == title);
     }
-    public Books? GetByAuthor(string author)
+    public Book? GetByAuthor(string author)
     {
         var books = _bookStore.GetAll();
         return books.FirstOrDefault(b => b.Author == author);
     }
-    public Books? GetByGenere(string genere)
+    public Book? GetByGenere(string genere)
     {
         var books = _bookStore.GetAll();
         return books.FirstOrDefault(b => b.Genere == genere);
     }
-    public Books? GetByPublisher(string publisher)
+    public Book? GetByPublisher(string publisher)
     {
         var books = _bookStore.GetAll();
         return books.FirstOrDefault(b => b.Publisher == publisher);
     }
-    public Books? GetByYear(int year)
+    public Book? GetByYear(int year)
     {
         var books = _bookStore.GetAll();
         return books.FirstOrDefault(b => b.Year == year);
     }
-    public Books? GetByISBN(string isbn)
+    public Book? GetByISBN(string isbn)
     {
         var books = _bookStore.GetAll();
         return books.FirstOrDefault(b => b.ISBN == isbn);
     }
-    public Books? GetByIsAvailable(bool isAvailable)
+    public Book? GetByIsAvailable(bool isAvailable)
     {
         var books = _bookStore.GetAll();
         var list = books.Where(b => b.IsAvailable == isAvailable).ToList();
@@ -143,21 +143,20 @@ public class BooksData : IBooksData
         return sb.ToString();
     }
 
-
-    public List<Books> GetAll()
+    public List<Book> GetAll()
     {
         throw new NotImplementedException();
     }
 
-    public List<Books> GetByPrice(string title)
+    public List<Book> GetByPrice(string title)
     {
         throw new NotImplementedException();
     }
 
-    public List<Books> FilterBooks(decimal minBuyPrice)
+    public List<Book> FilterBooks(decimal minBuyPrice)
     {
         var books = _bookStore.GetAll();
-        var list = new List<Books>();
+        var list = new List<Book>();
         foreach (var book in books)
         {
             if (book.BuyPrice >= minBuyPrice)
@@ -168,10 +167,10 @@ public class BooksData : IBooksData
         return list;
     }
 
-    public List<Books> FilterBooks(decimal minBuyPrice, decimal maxBuyPrice)
+    public List<Book> FilterBooks(decimal minBuyPrice, decimal maxBuyPrice)
     {
         var books = _bookStore.GetAll();
-        var list = new List<Books>();
+        var list = new List<Book>();
         foreach (var book in books)
         {
             if (book.BuyPrice >= minBuyPrice && book.BuyPrice <= maxBuyPrice)
@@ -182,10 +181,10 @@ public class BooksData : IBooksData
         return list;
     }
 
-    public List<Books> FilterBooks(decimal minBuyPrice, decimal maxBuyPrice, decimal minSellPrice)
+    public List<Book> FilterBooks(decimal minBuyPrice, decimal maxBuyPrice, decimal minSellPrice)
     {
         var books = _bookStore.GetAll();
-        var list = new List<Books>();
+        var list = new List<Book>();
         foreach (var book in books)
         {
             if (book.BuyPrice >= minBuyPrice && book.BuyPrice <= maxBuyPrice && book.SellPrice >= minSellPrice)
@@ -239,49 +238,49 @@ public class BooksData : IBooksData
         return (decimal)books.Average(b => b.SellPrice);
     }
 
-    public Books? GetByBuyPrice(decimal buyPrice)
+    public Book? GetByBuyPrice(decimal buyPrice)
     {
         var books = _bookStore.GetAll();
         return books.FirstOrDefault(b => b.BuyPrice == buyPrice);
     }
 
-    public Books? GetBySellPrice(decimal sellPrice)
+    public Book? GetBySellPrice(decimal sellPrice)
     {
         var books = _bookStore.GetAll();
         return books.FirstOrDefault(b => b.SellPrice == sellPrice);
     }
 
-    public List<Books> TakeBooks(int count)
+    public List<Book> TakeBooks(int count)
     {
         var books = _bookStore.GetAll();
         return books.Take(count).ToList();
     }
 
-    public List<Books> TakeBooksWithTheSameAuthor(string Author)
+    public List<Book> TakeBooksWithTheSameAuthor(string Author)
     {
         var books = _bookStore.GetAll();
         return books.Where(b => b.Author == Author).ToList();
     }
 
-    public List<Books> TakeBooksWithTheSameGenere(string Genere)
+    public List<Book> TakeBooksWithTheSameGenere(string Genere)
     {
         var books = _bookStore.GetAll();
         return books.Where(b => b.Genere == Genere).ToList();
     }
 
-    public List<Books> TakeBooksWithTheSamePublisher(string Publisher)
+    public List<Book> TakeBooksWithTheSamePublisher(string Publisher)
     {
         var books = _bookStore.GetAll();
         return books.Where(b => b.Publisher == Publisher).ToList();
     }
 
-    public List<Books> TakeBooksWhileStartsWith(string prefix)
+    public List<Book> TakeBooksWhileStartsWith(string prefix)
     {
         var books = _bookStore.GetAll();
         return books.Where(b => b.Title.StartsWith(prefix)).ToList();
     }
 
-    public List<Books> DistinctByAuthors()
+    public List<Book> DistinctByAuthors()
     {
         var books = _bookStore.GetAll();
         return books.Distinct().ToList();
@@ -293,7 +292,7 @@ public class BooksData : IBooksData
         return books.Select(b => b.Author).Distinct().ToList();
     }
 
-    public List<Books[]> ChunkBooks(int size)
+    public List<Book[]> ChunkBooks(int size)
     {
         var books = _bookStore.GetAll();
         return books.Chunk(size).ToList();
