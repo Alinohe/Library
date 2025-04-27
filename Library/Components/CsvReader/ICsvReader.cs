@@ -2,7 +2,7 @@
 namespace Library.Components.CsvReader;
 
 
-public interface ICvsReader
+public interface ICsvReader
 {
     List<Book> ProcessBooks(string filePath);
     List<Publisher> ProcessPublisher(string filePath);

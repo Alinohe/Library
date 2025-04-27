@@ -19,6 +19,7 @@ public class BooksData : IBooksData
             Title = b.Title,
             Author = b.Author,
             Genere = b.Genere,
+            Volume = b.Volume,
             Year = b.Year,
         }).ToList();
         return list;
@@ -296,5 +297,11 @@ public class BooksData : IBooksData
     {
         var books = _bookRepos.GetAll();
         return books.Chunk(size).ToList();
+    }
+
+    public List<Book> GetByVolume()
+    {
+        var books = _bookRepos.GetAll();
+        return books.OrderBy(b => b.Volume).ToList();
     }
 }

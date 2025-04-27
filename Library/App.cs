@@ -2,6 +2,7 @@
 using System.Xml.Linq;
 using Library.Data.Entities;
 using Library.Data.Repositories;
+using System.Xml.Serialization;
 namespace Library;
 
 public class App : IApp
@@ -28,6 +29,7 @@ public class App : IApp
             new XAttribute("Title", b.Title),
             new XAttribute("Author", b.Author),
            new XAttribute("Genere", b.Genere),
+              new XAttribute("Volume", b.Volume),
            new XAttribute("Publisher", b.Publisher),
            new XAttribute("Year", b.Year))));
 
@@ -39,17 +41,18 @@ public class App : IApp
     {
         var document = XDocument.Load("books.xml");
         var books = document.Descendants("Book")
-            .Select(b => new
+            .Select(b => new 
             {
                 Title = b.Attribute("Title")?.Value,
                 Author = b.Attribute("Author")?.Value,
                 Genere = b.Attribute("Genere")?.Value,
+                Volume = b.Attribute("Volume")?.Value,
                 Publisher = b.Attribute("Publisher")?.Value,
                 Year = int.TryParse(b.Attribute("Year")?.Value, out var year) ? year : (int?)null
             }).ToList();
         foreach (var book in books)
         {
-            Console.WriteLine($"{book.Title} by {book.Author}, Genre: {book.Genere}, Publisher: {book.Publisher}, Year: {book.Year}");
+            Console.WriteLine($"Title: {book.Title} by Author: {book.Author}, Genre: {book.Genere}, Volume: {book.Volume} Publisher: {book.Publisher}, Year: {book.Year}");
         }
     }
 

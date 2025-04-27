@@ -7,6 +7,7 @@ public interface IBooksData
     List<Book> GetByTitle();
     List<Book> GetByAuthor();
     List<Book> GetByGenere();
+    List<Book> GetByVolume();
     List<Book> GetByPublisher();
     List<Book> GetByYear();
     List<Book> GetByISBN();

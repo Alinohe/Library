@@ -2,7 +2,7 @@
 using Library.Components.CsvReader.Extensions;
 namespace Library.Components.CsvReader;
 
-public class CvsReader : ICvsReader
+public class CvsReader : ICsvReader
 {
     public List<Book> ProcessBooks(string filePath)
     {
