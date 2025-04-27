@@ -1,5 +1,7 @@
-﻿namespace Library.Repositories.Repositories;
-using Library.Entities;
+﻿namespace Library.Data.Repositories.Extensions;
+
+using Library.Data.Entities;
+using Library.Data.Repositories;
 
 public static class RepositoryExtensions
 {
@@ -17,7 +19,7 @@ public static class RepositoryExtensions
         where T : class, IEntity
     {
         Console.WriteLine(message);
-        AddBatch(repository, items);
+        repository.AddBatch(items);
     }
 
     public static void AddBatch<T>(this string str, T[] items)

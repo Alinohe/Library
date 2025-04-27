@@ -1,6 +1,6 @@
-﻿using Library.Entities;
-using Library.Repositories;
-using Library.Data;
+﻿using Library.Data;
+using Library.Data.Entities;
+using Library.Data.Repositories;
 
 namespace Library.UserComminucation;
 
@@ -23,6 +23,8 @@ public class UserCommunication : IUserCommunication
         _clientsRepository = clientsRepository;
         _librarianRepository = librarianRepository;
     }
+
+
 
     public void MainMenu()
     {

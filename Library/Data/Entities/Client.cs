@@ -1,4 +1,4 @@
-﻿namespace Library.Entities;
+﻿namespace Library.Data.Entities;
 
 public class Client : EntityBase
 {

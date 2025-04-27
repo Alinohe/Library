@@ -1,6 +1,6 @@
-﻿namespace Library.Entities
+﻿namespace Library.Data.Entities
 {
-    public class Employee :EntityBase
+    public class Employee : EntityBase
     {
         public string? Name { get; set; }
         public string? Surname { get; set; }

@@ -1,10 +1,9 @@
-﻿
-using Library.Entities;
-using Library.Repositories;
-using Library.Data;
+﻿using Library.Data;
 using Microsoft.Extensions.DependencyInjection;
 using Library;
 using Library.UserComminucation;
+using Library.Data.Entities;
+using Library.Data.Repositories;
 
 var services = new ServiceCollection();
 services.AddSingleton<IApp, App>();

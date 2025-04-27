@@ -1,9 +1,9 @@
-﻿using Microsoft.VisualBasic;
-using System.Text;
-namespace Library.Entities;
+﻿
+namespace Library.Components.CsvReader.Books;
 
-public class Book : EntityBase
+public class Book
 {
+    public int Id { get; set; }
     public string? Title { get; set; }
     public string? Author { get; set; }
     public string? Genere { get; set; }
@@ -14,7 +14,6 @@ public class Book : EntityBase
     public DateTime? DateOfBorrow { get; set; }
     public decimal? BuyPrice { get; set; }
     public decimal? SellPrice { get; set; }
-
     public int? NameLengh { get; set; }
     public decimal? SoldPrice { get; set; }
 }

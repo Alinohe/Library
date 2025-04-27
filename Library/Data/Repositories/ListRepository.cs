@@ -1,5 +1,7 @@
-﻿namespace Library.Repositories;
-using Library.Entities;
+﻿namespace Library.Data.Repositories;
+
+using Library.Data.Entities;
+
 public class ListRepository<T> : IRepository<T>
     where T : class, IEntity, new()
 {

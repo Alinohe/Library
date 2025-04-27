@@ -1,16 +1,21 @@
-﻿namespace Library.Repositories;
-using Library.Entities;
+﻿namespace Library.Data.Repositories;
+
+using Library.Data.Entities;
 using System.Text.Json;
 
 public class WriteInFileRepository<T> : IRepository<T> where T : class, IEntity, new()
 {
     public string LFile;
     public Action<Book> bookAdded;
-    public WriteInFileRepository(string file, Action<Book> bookAdded)
+    public Action<Book> bookRemoved;
+    public WriteInFileRepository(string file, Action<Book> bookAdded, Action<Book> bookRemoved)
     {
         LFile = file;
         this.bookAdded = bookAdded;
+        this.bookRemoved = bookRemoved;
     }
+
+
 
     private const string fileName = "Library.json";
     private readonly Action<T>? _itemAddedCallback;

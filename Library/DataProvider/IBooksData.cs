@@ -1,4 +1,5 @@
-﻿using Library.Entities;
+﻿using Library.Data.Entities;
+
 namespace Library.Data;
 public interface IBooksData
 {
