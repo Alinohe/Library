@@ -4,11 +4,11 @@ namespace Library.Components.CsvReader;
 
 public class CvsReader : ICsvReader
 {
-    public List<Book> ProcessBooks(string filePath)
+    public List<Books.Books> ProcessBooks(string filePath)
     {
         if (!File.Exists(filePath))
         {
-            return new List<Book>();
+            return new List<Books.Books>();
         }
         var books = File.ReadAllLines(filePath)
                .Skip(1)

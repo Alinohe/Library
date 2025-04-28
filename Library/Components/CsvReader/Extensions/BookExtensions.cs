@@ -4,12 +4,12 @@ namespace Library.Components.CsvReader.Extensions;
 
 public static class BookExtensions
 {
-    public static IEnumerable<Book> ToBook(this IEnumerable<string> source)
+    public static IEnumerable<Books.Books> ToBook(this IEnumerable<string> source)
     {
         foreach (var line in source)
         {
             var col = line.Split(',');
-            yield return new Book
+            yield return new Books.Books
             {
                 Title = col[0],
                 Author = col[1],
