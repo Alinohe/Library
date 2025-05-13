@@ -14,7 +14,7 @@ public interface IBooksData
     List<Book> GetByIsAvailable();
     List<Book> GetById();
     List<Book> GetAll();
-    List<Book> GetByPrice(string title);
+    List<Book> GetByPrice(decimal title);
     List<Book> FilterBooks(decimal minBuyPrice);
     List<Book> FilterBooks(decimal minBuyPrice, decimal maxBuyPrice);
     List<Book> FilterBooks(decimal minBuyPrice, decimal maxBuyPrice, decimal minSellPrice);
@@ -55,5 +55,5 @@ public interface IBooksData
 
     //Chunk
     List<Book[]> ChunkBooks(int size);
-
+   
 }

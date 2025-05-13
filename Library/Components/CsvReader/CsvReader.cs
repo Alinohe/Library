@@ -34,7 +34,6 @@ public class CvsReader : ICsvReader
                        Address = columns[1],
                        Country = columns[2]
                    };
-
                });
         return publishers.ToList();
     }

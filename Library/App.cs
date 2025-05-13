@@ -7,7 +7,6 @@ namespace Library;
 
 public class App : IApp
 {
-
     private readonly ICsvReader _csvReader;
     public App(ICsvReader csvReader)
     {
@@ -21,7 +20,7 @@ public class App : IApp
 
     private void CreateXml()
     {
-        var records = _csvReader.ProcessBooks("books.csv");
+        var records = _csvReader.ProcessBooks("Resources/Books.csv");
         var document = new XDocument();
         var books = new XElement("Books", records
             .Select(b =>
@@ -30,8 +29,8 @@ public class App : IApp
             new XAttribute("Author", b.Author),
            new XAttribute("Genere", b.Genere),
               new XAttribute("Volume", b.Volume),
-           new XAttribute("Publisher", b.Publisher),
-           new XAttribute("Year", b.Year))));
+           new XAttribute("Publisher", b.Publisher))));
+           //new XAttribute("Year", b.Year))));
 
         document.Add(books);
         document.Save("books.xml");
@@ -48,11 +47,11 @@ public class App : IApp
                 Genere = b.Attribute("Genere")?.Value,
                 Volume = b.Attribute("Volume")?.Value,
                 Publisher = b.Attribute("Publisher")?.Value,
-                Year = int.TryParse(b.Attribute("Year")?.Value, out var year) ? year : (int?)null
+                //Year = int.TryParse(b.Attribute("Year")?.Value, out var year) ? year : (int?)null
             }).ToList();
         foreach (var book in books)
         {
-            Console.WriteLine($"Title: {book.Title} by Author: {book.Author}, Genre: {book.Genere}, Volume: {book.Volume} Publisher: {book.Publisher}, Year: {book.Year}");
+            Console.WriteLine($"Title: {book.Title} by Author: {book.Author}, Genre: {book.Genere}, Volume: {book.Volume} Publisher: {book.Publisher}");
         }
     }
 

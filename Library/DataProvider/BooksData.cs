@@ -146,12 +146,22 @@ public class BooksData : IBooksData
 
     public List<Book> GetAll()
     {
-        throw new NotImplementedException();
+       var books = _bookRepos.GetAll();
+        return books.OrderBy(b => b.Title).ToList();
     }
 
-    public List<Book> GetByPrice(string title)
+    public List<Book> GetByPrice(decimal title)
     {
-        throw new NotImplementedException();
+        var books = _bookRepos.GetAll();
+        var list = books.Where(b => b.BuyPrice == title).ToList();
+        if (list.Count == 0)
+        {
+            throw new Exception("No books found");
+        }
+        else
+        {
+            return list;
+        };
     }
 
     public List<Book> FilterBooks(decimal minBuyPrice)

@@ -7,7 +7,11 @@ namespace Library.UserComminucation;
 
 public class UserCommunication : IUserCommunication
 {
+    public const string BooksFilename = "books.json";
+    public const string BooksEventBookAdded = "BookAdded";
 
+
+    private readonly IBooksData _booksData;
     private readonly IRepository<Book> _booksRepository;
     private readonly IRepository<Employee> _employeesRepository;
     private readonly IRepository<Client> _clientsRepository;
@@ -26,7 +30,96 @@ public class UserCommunication : IUserCommunication
     }
 
 
+    public void AddBookToFile()
+    {
+        var booksRepository = _booksRepository.GetAll();
+        foreach (var book in booksRepository)
+        {
+            using (var writer = File.AppendText(BooksFilename))
+            {
+                if (book != null)
+                {
+                    writer.WriteLine(book.ToString());
+                }
+            }
+        }
+    }
 
+    public void AddBookToList()
+    {
+        int booksCount = _booksRepository.GetAll().Count();
+        if (booksCount == 0)
+        {
+            if (File.Exists(BooksFilename))
+            {
+               Console.WriteLine($"Ladowanie danych z pliku\n{BooksFilename}"+
+                   $"");
+                Thread.Sleep(2000);
+
+                using (var reader = new StreamReader(BooksFilename))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        var book = new Book
+                        {
+                            Title = line,
+                            Author = line,
+                            Genere = line,
+                            Volume = line,
+                            Publisher = line,
+                            Year = int.Parse(line),
+                        };
+                        _booksRepository.Add(book);
+                    }
+                }
+                Console.WriteLine($"Ladowanie zakonczone, dodano {booksCount} ksiazek");
+            }
+            else
+            {
+                Console.WriteLine("Brak pliku z ksiazkami \n"+"\n"
+                    + "Wczytuje nowe dane\n"+"");
+                Thread.Sleep(2000);
+                var books = GenerateSampleBooks();
+                    foreach(var book in books)
+                {
+                    _booksRepository.Add(book);
+                }
+                    _booksRepository.Save();
+                AddBookToFile();
+            }
+        }
+    }
+
+    //******************************************************************
+
+    public static List<Book> GenerateSampleBooks()
+    {
+        return new List<Book>
+        {
+            new Book
+            {
+            Id = 1,
+            Title = ("Harry Potter i Kamień Filozoficzny"),
+            Author = ("J.K. Rowling"),
+            Genere = ("Fantasy"),
+            Volume = ("1"),
+            Publisher = ("Bloomsbury"),
+            Year = 1997,
+            ISBN = ("9780747532699"),
+            IsAvailable = true,
+            DateOfBorrow = DateTime.Now,
+            BuyPrice = 25.99m,
+            SellPrice = 35.99m,
+            NameLengh = 20,
+            SoldPrice = 0,
+
+            }
+        };
+    }
+
+
+    //******************************************************************
     public void MainMenu()
     {
         Console.Clear();
@@ -38,60 +131,60 @@ public class UserCommunication : IUserCommunication
             "(q) Exit");
     }
 
-    private object GetInputWrite(string v)
-    {
-        Console.Write(v);
-        return Console.ReadLine();
+    //private object GetInputWrite(string v)
+    //{
+    //    Console.Write(v);
+    //    return Console.ReadLine();
 
-    }
+    //}
 
-    private void EmployeeMenu()
-    {
-        Console.Clear();
-        Console.WriteLine("Wybierz Z menu" +
-            "(1) Display Employees" +
-            "(2) Add Employee" +
-            "(3) Remove Employee" +
-            "(4) Update Employee" +
-            "(5) Back to main menu");
-    }
+    //private void EmployeeMenu()
+    //{
+    //    Console.Clear();
+    //    Console.WriteLine("Wybierz Z menu" +
+    //        "(1) Display Employees" +
+    //        "(2) Add Employee" +
+    //        "(3) Remove Employee" +
+    //        "(4) Update Employee" +
+    //        "(5) Back to main menu");
+    //}
 
-    private void LibrarianMenu()
-    {
-        Console.Clear();
-        Console.WriteLine("Wybierz Z menu" +
-            "(1) Display Librarians" +
-            "(2) Add Librarian" +
-            "(3) Remove Librarian" +
-            "(4) Update Librarian" +
-            "(5) Back to main menu");
-    }
+    //private void LibrarianMenu()
+    //{
+    //    Console.Clear();
+    //    Console.WriteLine("Wybierz Z menu" +
+    //        "(1) Display Librarians" +
+    //        "(2) Add Librarian" +
+    //        "(3) Remove Librarian" +
+    //        "(4) Update Librarian" +
+    //        "(5) Back to main menu");
+    //}
 
-    private void ClientMenu()
-    {
-        Console.Clear();
-        Console.WriteLine("Wybierz Z menu" +
-            "(1) Display Clients" +
-            "(2) Add Client" +
-            "(3) Remove Client" +
-            "(4) Update Client" +
-            "(5) Back to main menu");
-    }
+    //private void ClientMenu()
+    //{
+    //    Console.Clear();
+    //    Console.WriteLine("Wybierz Z menu" +
+    //        "(1) Display Clients" +
+    //        "(2) Add Client" +
+    //        "(3) Remove Client" +
+    //        "(4) Update Client" +
+    //        "(5) Back to main menu");
+    //}
 
-    private void BooksMenu()
-    {
-        Console.Clear();
-        Console.WriteLine("Wybierz Z menu" +
-            "(1) Display Books" +
-            "(2) Display Books by Author" +
-            "(3) Display Books by Genre" +
-            "(4) Add Book" +
-            "(5) Remove Book" +
-            "(6) Update Book" +
-            "(9) Back to main menu");
+    //private void BooksMenu()
+    //{
+    //    Console.Clear();
+    //    Console.WriteLine("Wybierz Z menu" +
+    //        "(1) Display Books" +
+    //        "(2) Display Books by Author" +
+    //        "(3) Display Books by Genre" +
+    //        "(4) Add Book" +
+    //        "(5) Remove Book" +
+    //        "(6) Update Book" +
+    //        "(9) Back to main menu");
 
 
-    }
+    //}
 
     public void DisplayBooks()
     {

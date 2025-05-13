@@ -8,6 +8,7 @@ using Library.Data.Repositories;
 
 var services = new ServiceCollection();
 services.AddSingleton<IApp, App>();
+services.AddSingleton<ICsvReader, CvsReader>();
 services.AddSingleton<IUserCommunication, UserCommunication>();
 services.AddSingleton<Book>();
 //services.AddSingleton<IRepository<Book>, WriteInFileRepository<Book>>();

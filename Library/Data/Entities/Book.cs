@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System.Text;
-namespace Library.Data.Entities;
+﻿namespace Library.Data.Entities;
 
 public class Book : EntityBase
 {
